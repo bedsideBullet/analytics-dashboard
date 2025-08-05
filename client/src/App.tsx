@@ -75,7 +75,7 @@ function App() {
 	const handleReseed = async () => {
 		setIsLoading(true);
 		try {
-			await fetch("${API_BASE_URL}/api/seed", { method: "POST" });
+			await fetch(`${API_BASE_URL}/api/seed`, { method: "POST" });
 			await fetchData();
 		} catch (error) {
 			console.error("Failed to reseed database:", error);
