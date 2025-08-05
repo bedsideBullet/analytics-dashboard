@@ -51,16 +51,16 @@ function App() {
 	const [isLoading, setIsLoading] = useState(false);
 	const { colorMode } = useColorMode();
 
-	const API_BASE_URL = import.meta.env.VITE_API_URL || "";
+	const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 	const fetchData = async () => {
 		try {
 			// Fetch both products and sales
-			const productsResponse = await fetch("${API_BASE_URL}/api/products");
+			const productsResponse = await fetch(`${API_BASE_URL}/api/products`);
 			const productsData: Product[] = await productsResponse.json();
 			setProducts(productsData);
 
-			const salesResponse = await fetch("${API_BASE_URL}/api/sales");
+			const salesResponse = await fetch(`${API_BASE_URL}/api/sales`);
 			const salesData: Sale[] = await salesResponse.json();
 			setSales(salesData);
 		} catch (error) {
