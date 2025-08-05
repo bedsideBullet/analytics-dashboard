@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../models/Product");
-const Sale = require("../models/Sale");
+const Product = require("../models/product");
+const Sale = require("../models/sale");
 
 const productsData = [
 	{ name: "The Lone Star Smoker", price: 399.99, cost: 189.5 },
