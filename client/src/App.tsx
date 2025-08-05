@@ -51,14 +51,16 @@ function App() {
 	const [isLoading, setIsLoading] = useState(false);
 	const { colorMode } = useColorMode();
 
+	const API_BASE_URL = import.meta.env.VITE_API_URL || "";
+
 	const fetchData = async () => {
 		try {
 			// Fetch both products and sales
-			const productsResponse = await fetch("/api/products");
+			const productsResponse = await fetch("${API_BASE_URL}/api/products");
 			const productsData: Product[] = await productsResponse.json();
 			setProducts(productsData);
 
-			const salesResponse = await fetch("/api/sales");
+			const salesResponse = await fetch("${API_BASE_URL}/api/sales");
 			const salesData: Sale[] = await salesResponse.json();
 			setSales(salesData);
 		} catch (error) {
@@ -73,7 +75,7 @@ function App() {
 	const handleReseed = async () => {
 		setIsLoading(true);
 		try {
-			await fetch("/api/seed", { method: "POST" });
+			await fetch("${API_BASE_URL}/api/seed", { method: "POST" });
 			await fetchData();
 		} catch (error) {
 			console.error("Failed to reseed database:", error);
